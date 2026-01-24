@@ -11,7 +11,8 @@ body {
     font-family: calibri;
     padding-right: 400px;
     padding-left: 100px;
-    border-color: aqua;
+    border-radius: 100px;
+    border: solid 3px hsl(221, 72%, 37%)
 }
 
 .navdiv{
@@ -19,14 +20,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 
-.logo{
+.logo a{
 
     font-size: 35px;
     font-weight: 600;
+    text-decoration: none;
     color: aqua;
+    
 }
+
 
 li{
     list-style: none;
@@ -38,5 +43,7 @@ li a{
     font-size: 18px;
     font-weight: bold;
     margin-right: 100px;
+    border-radius: 200px;
+    border: solid 2px hsl(221, 72%, 37%)
 }
 
