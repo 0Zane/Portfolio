@@ -1,3 +1,42 @@
 body {
     background-color: black;
 }
+
+*{
+    text-decoration: none;
+}
+
+.navbar{
+    background-color: #0F0F0F;
+    font-family: calibri;
+    padding-right: 400px;
+    padding-left: 100px;
+    border-color: aqua;
+}
+
+.navdiv{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+
+    font-size: 35px;
+    font-weight: 600;
+    color: aqua;
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+li a{
+    color: aqua;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 100px;
+}
+
