@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: rgb(3, 4, 12);
 }
 
 *{
@@ -7,44 +7,45 @@ body {
 }
 
 .navbar{
-    background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(20, 40, 80, 0.4) 100%);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(10,12,16,0.95) 0%, rgba(8,12,22,0.6) 100%);
+    backdrop-filter: blur(4px);
     font-family: calibri;
-    padding-right: 400px;
-    padding-left: 100px;
-    border-radius: 100px;
-    border: solid 2px rgba(0, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    width: 720px;                /* centered rectangle */
+    max-width: calc(100% - 48px);
+    padding: 10px 18px;          /* compact box */
+    border-radius: 50px;          /* subtle rounding for rectangle */
+    border: 1px solid rgba(20,120,180,0.12);
+    box-shadow: 0 6px 16px rgba(10,70,100,0.06);
+    transition: all 0.18s ease;
+    margin: 20px auto;           /* center on screen */
+    position: relative;
+    z-index: 20; /* keep navbar above the big text */
 }
 
 .navbar:hover {
-    background: linear-gradient(135deg, rgba(15, 15, 15, 0.9) 0%, rgba(20, 40, 80, 0.6) 100%);
-    border-color: rgba(0, 255, 255, 0.6);
-    box-shadow: 0 12px 48px rgba(0, 255, 255, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    border-color: rgba(20,140,200,0.18);
+    box-shadow: 0 10px 28px rgba(20,120,180,0.08);
 }
 
 .navdiv{
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    gap: 12px;
 }
 
 .logo a{
-
-    font-size: 35px;
-    font-weight: 600;
+    font-size: 28px;            /* bigger logo text */
+    font-weight: 700;
     text-decoration: none;
-    color: aqua;
-    text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-    transition: all 0.3s ease;
+    color: #86d6ff;
+    text-shadow: 0 0 10px rgba(134,214,255,0.16);
+    transition: transform .16s ease, text-shadow .16s ease;
 }
 
 .logo a:hover {
-    text-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
-    transform: scale(1.05);
+    transform: translateY(-2px) scale(1.02);
+    text-shadow: 0 0 14px rgba(134,214,255,0.28);
 }
 
 li{
@@ -53,22 +54,111 @@ li{
 }
 
 li a{
-    color: aqua;
-    font-size: 18px;
-    font-weight: bold;
-    margin-right: 100px;
-    border-radius: 200px;
-    border: solid 2px rgba(0, 255, 255, 0.3);
-    padding: 8px 20px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    color: #86d6ff;
+    font-size: 18px;            /* larger nav text */
+    font-weight: 700;
+    margin-right: 18px;         /* tighter spacing */
+    border-radius: 6px;         /* smaller rounding to match rectangle */
+    border: 1px solid rgba(255,255,255,0.03);
+    padding: 8px 10px;          /* compact padding */
+    transition: all 0.16s ease;
+    background: transparent;
 }
 
 li a:hover {
-    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(0, 200, 255, 0.1) 100%);
-    border-color: rgba(0, 255, 255, 0.8);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(0, 255, 255, 0.1);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+    background: rgba(120,200,255,0.06);
+    border-color: rgba(134,214,255,0.16);
+    box-shadow: 0 6px 14px rgba(18,120,160,0.05);
+    transform: translateY(-2px);
 }
 
+/* Responsive: keep centered rectangle but allow full width on small screens */
+@media (max-width: 640px) {
+    .navbar { width: calc(100% - 32px); padding: 8px 12px; }
+    .logo a { font-size: 22px; }
+    li a { font-size: 16px; margin-right: 10px; padding: 6px 8px; }
+}
+
+.backtext {
+    display: flex;
+    justify-content: center; 
+}
+
+.backtextimage {
+    width: 1100px;
+}
+
+.introduction{
+
+    color: #146aaf;
+}
+
+.project{
+    background-color: black;
+    color: #146aaf;
+    border-radius: 10px;
+    border : 5px solid #146aaf
+}
+
+/* new hero styles */
+.hero{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible; /* ensure image can extend outside */
+    position: relative;
+    pointer-events: none; /* make nav links still easy to click if overlaps */
+}
+
+.hero-text{
+    /* fill viewport while remaining responsive */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8rem;
+    line-height: 0.9;
+    white-space: nowrap;
+    padding: 0 24px;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+
+    /* big responsive size to cover page length (tall writing) */
+    font-size: clamp(72px, 18vw, 220px);
+
+    /* subtle white -> grey gradient for the text */
+    background: linear-gradient(180deg, #ffffff 0%, #cfcfcf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #e6e6e6; /* fallback */
+
+    /* slight glow to fit web3 aesthetic */
+    text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+}
+
+/* image placed on top of the headline and scaled big by viewport height */
+.hero-image{
+    position: absolute;
+    z-index: 18;                 /* above the text but below navbar (navbar z-index:20) */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 22vh;                   /* nudge higher to overlap more */
+    height: clamp(420px, 75vh, 1600px); /* much larger, height-driven */
+    width: auto;
+    pointer-events: auto;
+    mix-blend-mode: normal;
+}
+
+/* tweak for small screens so image remains large but not overpowering */
+@media (max-width: 640px) {
+    .hero-image {
+        top: 18vh;
+        height: clamp(220px, 50vh, 600px);
+    }
+}
+
+/* ensure hero scales on small screens */
+@media (max-width: 420px) {
+    .hero-text { letter-spacing: 0.3rem; font-size: clamp(48px, 20vw, 120px); }
+}
