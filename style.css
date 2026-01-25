@@ -153,8 +153,9 @@ li a:hover {
 }
 
 .projectimage{
+    display: flex;
     width: 100%;
-    height: 240px;
+    justify-content: center;
     margin: 0 0 20px 0;
     background: linear-gradient(135deg, rgba(30,60,100,0.2) 0%, rgba(10,30,60,0.3) 100%);
     border-radius: 10px;
