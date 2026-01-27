@@ -260,3 +260,75 @@ li a:hover {
     -webkit-text-fill-color: transparent;
     color: #e6e6e6; /* fallback */
 }
+
+/* About section: modern professional card with right image */
+.about-section{
+    max-width: 980px;
+    margin: 28px auto 80px auto;
+    padding: 0 18px;
+}
+.about-card{
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background: linear-gradient(180deg, rgba(12,18,30,0.55), rgba(6,10,18,0.45));
+    border: 1px solid rgba(134,214,255,0.06);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 14px 40px rgba(2,8,20,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+.about-content{ /* left column */
+    flex: 1 1 55%;
+}
+.about-title{
+    margin: 0 0 12px 0;
+    font-size: clamp(26px, 4.5vw, 40px);
+    font-weight: 900;
+    color: #e9f7ff;
+    letter-spacing: -0.01em;
+    background: linear-gradient(180deg, #ffffff 0%, #bfe8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.about-text{
+    margin: 0;
+    color: rgba(200,225,255,0.92);
+    line-height: 1.7;
+    font-size: clamp(15px, 2.2vw, 17px);
+    max-width: 68ch;
+}
+.about-photo{ /* right column */
+    flex: 0 0 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.about-photo img{
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.6), 0 6px 18px rgba(6,20,40,0.6);
+    transform: translateY(-6px);
+}
+
+/* small screens: stack with image below text */
+@media (max-width: 820px) {
+    .about-card{ flex-direction: column-reverse; padding: 22px; }
+    .about-photo{ width: 100%; flex: none; margin-bottom: 6px; }
+    .about-photo img{ width: min(56vw, 320px); height: auto; border-radius: 12px; }
+    .about-content{ width: 100%; }
+}
+
+.about-subtitle{
+    margin: 0 0 12px 0;
+    font-size: clamp(20px, 4.5vw, 40px);
+    font-weight: 900;
+    color: #264c62;
+    letter-spacing: -0.01em;
+    background: linear-gradient(180deg, #461c5b 0%, #2490ce 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
