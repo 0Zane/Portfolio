@@ -163,7 +163,7 @@ li a:hover {
 }
 
 .projectdescription{
-    font-size: clamp(15px, 2vw, 16px);
+    font-size: clamp(20px, 2vw, 16px);
     color: rgba(190,220,255,0.85);
     line-height: 1.6;
     margin: 0;
