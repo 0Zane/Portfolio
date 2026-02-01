@@ -52,10 +52,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
-camera.position.z = objToRender === "dino" ? 25 : 5;
+camera.position.z = objToRender === "dino" ? 25 : 6;
+//Raise the camera slightly so the view is a bit higher above the model
+camera.position.y = objToRender === "dino" ? 5 : 2;
 
 //Add lights to the scene, so we can actually see the 3D model
-const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
+const topLight = new THREE.DirectionalLight(0xffffff, 3); // (color, intensity)
 topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
@@ -75,9 +77,22 @@ function animate() {
 
   //Make the eye move
   if (object && objToRender === "eye") {
-    //I've played with the constants here until it looked good 
-    object.rotation.y = -3 + mouseX / window.innerWidth * 3;
-    object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
+    // Reduce sensitivity and base the rotation on offset from screen center so the object stays centered
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const offsetX = (mouseX - centerX) / centerX; // -1 .. 1
+    const offsetY = (mouseY - centerY) / centerY; // -1 .. 1
+
+    // Compute the rotation the old code produced at center (so we keep the same 'rest' pose)
+    const baseY = -3 + (centerX / window.innerWidth) * 3; // previously evaluated to -1.5
+    const baseX = -1.2 + (centerY * 2 / window.innerHeight); // previously evaluated to -0.2
+
+    // Smaller sensitivities make the object stay closer to center
+    const sensitivityY = 0.6; // was effectively 3
+    const sensitivityX = 0.35; // was effectively 2
+
+    object.rotation.y = baseY + offsetX * sensitivityY;
+    object.rotation.x = baseX + offsetY * sensitivityX;
   }
   renderer.render(scene, camera);
 }
