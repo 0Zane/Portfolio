@@ -54,10 +54,10 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 //Set how far the camera will be from the 3D model
 camera.position.z = objToRender === "dino" ? 25 : 6;
 //Raise the camera slightly so the view is a bit higher above the model
-camera.position.y = objToRender === "dino" ? 5 : 2;
+camera.position.y = objToRender === "dino" ? 3:2 ;
 
 //Add lights to the scene, so we can actually see the 3D model
-const topLight = new THREE.DirectionalLight(0xffffff,2 ); // (color, intensity)
+const topLight = new THREE.DirectionalLight(0xffffff,3 ); // (color, intensity)
 topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);

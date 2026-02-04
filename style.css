@@ -21,6 +21,18 @@ body {
     position: relative;
     z-index: 20; /* keep navbar above the big text */
 }
+.maintitle{
+    font-size: clamp(24px, 4vw, 36px);
+    margin: 0 0 16px 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    background: linear-gradient(180deg, #ffffff 0%, #18598f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    
+}
 
 .navbar:hover {
     border-color: rgba(20,140,200,0.18);
@@ -42,6 +54,20 @@ body {
     text-shadow: 0 0 12px rgba(134,214,255,0.18);
     transition: transform .16s ease, text-shadow .16s ease;
 }
+
+.mainparagraph{
+     font-family: calibri;
+         font-size: clamp(24px, 4vw, 36px);
+    margin: 0 0 16px 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    background: linear-gradient(180deg, #ffffff 0%, #18598f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
 
 .logo a:hover {
     transform: translateY(-2px) scale(1.02);
@@ -207,18 +233,6 @@ li a:hover {
 
 
 
-/* image placed on top of the headline and scaled big by viewport height */
-.hero-image{
-    position: absolute;
-    z-index: 18;                 /* above the text but below navbar (navbar z-index:20) */
-    left: 50%;
-    transform: translateX(-50%);
-    top: 22vh;                   /* nudge higher to overlap more */
-    height: clamp(420px, 75vh, 1600px); /* much larger, height-driven */
-    width: auto;
-    pointer-events: auto;
-    mix-blend-mode: normal;
-}
 
 
 
