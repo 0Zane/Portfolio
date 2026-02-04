@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(3, 0, 8);
+    background-color: rgb(9, 8, 17);
 }
 
 *{
@@ -412,7 +412,95 @@ li a:hover {
     position: absolute;
     top: 0;
     left:  0;
-    filter: drop-shadow(0 24px 40px rgba(0,0,0,0.6));
+    filter: drop-shadow(0 24px 40px rgba(26, 99, 141, 0.6));
     transform: translateZ(0); /* promote to its own layer for smoother animation */
     z-index: 5;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.hero {
+  min-height: 100vh;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+
+}
+
+
+
+.hero-label {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #00eaff;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.hero-label::before {
+  content: "";
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  width: 40px;
+  height: 2px;
+  background: #00eaff;
+  transform: translateY(-50%);
+}
+
+.hero-title {
+  font-size: 90px;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(0, 234, 255, 0.35);
+}
+
+.hero-subtitle {
+  margin-top: 15px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #cfd9ff;
+}
+
+.hero-text {
+  margin-top: 25px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #b5c0e0;
+}
+
+.hero-socials {
+  margin-top: 35px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.hero-socials a {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.hero-socials a:hover {
+  background: #00eaff;
+  color: #050b1a;
+  transform: translateY(-5px);
 }
