@@ -52,9 +52,9 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
-camera.position.z = objToRender === "dino" ? 25 : 6;
+camera.position.z = objToRender === "dino" ? 25 : 5;
 //Raise the camera slightly so the view is a bit higher above the model
-camera.position.y = objToRender === "dino" ? 3:2 ;
+camera.position.y = objToRender === "dino" ? 3:1 ;
 
 //Add lights to the scene, so we can actually see the 3D model
 const topLight = new THREE.DirectionalLight(0xffffff,3 ); // (color, intensity)
@@ -62,38 +62,42 @@ topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "dino" ? 5 : 1);
+const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "dino" ? 5 : 2);
 scene.add(ambientLight);
 
 //This adds controls to the camera, so we can rotate / zoom it with the mouse
 if (objToRender === "dino") {
   controls = new OrbitControls(camera, renderer.domElement);
 }
+// 1. Définis des variables pour stocker la cible (la souris) et la position actuelle
+let targetRotationX = 0;
+let targetRotationY = 0;
+const slowingFactor = 0.05; // Plus ce chiffre est petit (ex: 0.01), plus c'est lent/fluide
 
-//Render the scene
 function animate() {
   requestAnimationFrame(animate);
-  //Here we could add some code to update the scene, adding some automatic movement
 
-  //Make the eye move
   if (object && objToRender === "eye") {
-    // Reduce sensitivity and base the rotation on offset from screen center so the object stays centered
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const offsetX = (mouseX - centerX) / centerX; // -1 .. 1
-    const offsetY = (mouseY - centerY) / centerY; // -1 .. 1
+const centerX = window.innerWidth / 2;
+const centerY = window.innerHeight / 2;
 
-    // Compute the rotation the old code produced at center (so we keep the same 'rest' pose)
-    const baseY = -3 + (centerX / window.innerWidth) * 3; // previously evaluated to -1.5
-    const baseX = -1.2 + (centerY * 2 / window.innerHeight); // previously evaluated to -0.2
+// Calcul du décalage (-1 à 1)
+const offsetX = (mouseX - centerX) / centerX; 
+const offsetY = (mouseY - centerY) / centerY; 
 
-    // Smaller sensitivities make the object stay closer to center
-    const sensitivityY = 0.6; // was effectively 3
-    const sensitivityX = 0.35; // was effectively 2
+// targetY reste identique pour l'axe horizontal
+const targetY = -1.5 + offsetX * 0.6; 
 
-    object.rotation.y = baseY + offsetX * sensitivityY;
-    object.rotation.x = baseX + offsetY * sensitivityX;
+// MODIFICATION ICI :
+// On change la valeur de base (le premier chiffre). 
+// En Three.js, une rotation X positive fait pencher l'objet vers l'avant (vers le bas).
+const targetX = 0.2 + offsetY * 0.35; // J'ai remplacé -0.2 par 0.5
+    // 2. L'astuce : On ne change pas brutalement la rotation.
+    // On avance de seulement 5% (slowingFactor) vers la cible à chaque frame.
+    object.rotation.y += (targetY - object.rotation.y) * slowingFactor;
+    object.rotation.x += (targetX - object.rotation.x) * slowingFactor;
   }
+
   renderer.render(scene, camera);
 }
 

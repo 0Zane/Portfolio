@@ -21,17 +21,78 @@ body {
     position: relative;
     z-index: 20; /* keep navbar above the big text */
 }
-.maintitle{
-    font-size: clamp(24px, 4vw, 36px);
-    margin: 0 0 16px 0;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    background: linear-gradient(180deg, #ffffff 0%, #18598f 100%);
+.impressive-title {
+    position: absolute;
+    top: 30%; /* Centre verticalement */
+    left: 50%; /* Centre horizontalement */
+    transform: translate(-50%, -50%); /* Ajuste pour le centrage parfait */
+    z-index: 10;
+    pointer-events: none; /* Permet d'interagir avec le modèle 3D en dessous */
+    
+    font-family: 'Share Tech Mono', monospace; /* Police monospace pour un look tech */
+    /* Assurez-vous d'importer cette police depuis Google Fonts dans votre HTML:
+       <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    */
+    
+    font-size: clamp(2rem, 5vw, 4rem); /* Taille dynamique */
+    font-weight: 400; /* Normal pour cette police */
+    text-align: center;
+    line-height: 1.2;
+    text-transform: uppercase; /* Pour un look plus tech */
+    
+    /* Dégradé holographique subtil */
+    background: linear-gradient(120deg, #8efffe 0%, #2980b9 50%, #8efffe 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-align: center;
+    background-clip: text; /* Pour les navigateurs modernes */
     
+    /* Ombre subtile pour le relief */
+    text-shadow: 0 0 5px rgba(142, 255, 254, 0.6),
+                 0 0 15px rgba(41, 128, 185, 0.4);
+    
+    animation: text-appear 2s forwards ease-out,
+               glitch-effect 6s infinite alternate ease-in-out; /* Ajout d'une animation glitch */
+}
+
+/* Animation d'apparition du texte */
+@keyframes text-appear {
+    0% { opacity: 0; transform: translate(-50%, -40%) scale(0.9); filter: blur(5px); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0px); }
+}
+
+/* Effet de glitch / scanline */
+@keyframes glitch-effect {
+    0% {
+        text-shadow: 0 0 5px rgba(142, 255, 254, 0.6),
+                     0 0 15px rgba(41, 128, 185, 0.4);
+        transform: translate(-50%, -50%);
+    }
+    10% {
+        text-shadow: 2px 0 5px rgba(142, 255, 254, 0.7),
+                     -2px 0 15px rgba(41, 128, 185, 0.5);
+        transform: translate(-50.5%, -50%) skewX(5deg);
+    }
+    12% {
+        text-shadow: -2px 0 5px rgba(142, 255, 254, 0.7),
+                     2px 0 15px rgba(41, 128, 185, 0.5);
+        transform: translate(-49.5%, -50%) skewX(-5deg);
+    }
+    14% {
+        text-shadow: 0 0 5px rgba(142, 255, 254, 0.6),
+                     0 0 15px rgba(41, 128, 185, 0.4);
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(142, 255, 254, 0.6),
+                     0 0 15px rgba(41, 128, 185, 0.4);
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Pour les lignes de texte individuelles, pour un contrôle plus fin */
+.impressive-title span:first-child {
+    display: block; /* Chaque span sur sa propre ligne */
+    margin-bottom: 0.2em; /* Petit espace entre les lignes */
 }
 
 .navbar:hover {
@@ -309,11 +370,10 @@ li a:hover {
 }
 
 #container3D {
-    position: fixed;
-    inset: 0;
+    position: relative; /* Au lieu de fixed */
+    width: 100%;
+    height: 100vh; 
     z-index: 5;
-    pointer-events: none; /* keeps UI clickable above the scene */
-    background: radial-gradient(circle at 50% 35%, rgba(30,40,70,0.18), rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.95) 80%);
     overflow: hidden;
 }
 
