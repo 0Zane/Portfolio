@@ -398,12 +398,11 @@ li a:hover {
 
 /* subtle vignette to darken edges */
 #container3D::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
-    pointer-events: none;
-    z-index: 8;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 60%,
+    rgba(9,8,17,1) 100%
+  );
 }
 
 #container3D canvas {
@@ -426,7 +425,7 @@ li a:hover {
 
 
 .hero {
-  min-height: 100vh;
+  min-height: 20vh;
   align-items: center;
   text-align: center;
   padding: 30px;
@@ -504,3 +503,139 @@ li a:hover {
   color: #050b1a;
   transform: translateY(-5px);
 }
+
+.glow-section {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.glow-card {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  background: #1a1a1f;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  border: 1px solid rgba(180, 130, 255, 0.25);
+  box-shadow:
+    0 0 25px rgba(180, 130, 255, 0.35),
+    0 0 60px rgba(180, 130, 255, 0.15);
+}
+
+/* glow overlay (soft & clean) */
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(
+    120deg,
+    rgba(200, 160, 255, 0.6),
+    rgba(140, 90, 255, 0.4),
+    rgba(200, 160, 255, 0.6)
+  );
+  filter: blur(18px);
+  z-index: -1;
+}
+
+.glow-content {
+  flex: 1;
+}
+
+.glow-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.glow-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(220, 220, 240, 0.9);
+  margin-bottom: 28px;
+  max-width: 60ch;
+}
+
+/* buttons */
+.glow-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.glow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.25s ease;
+}
+
+.glow-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(180, 130, 255, 0.35);
+}
+
+/* platform colors */
+.glow-btn.discord:hover { background: #5865F2; }
+.glow-btn.x:hover { background: #000000; }
+.glow-btn.youtube:hover { background: #FF0000; }
+
+/* image */
+.glow-image {
+  flex: 0 0 280px;
+  display: flex;
+  justify-content: center;
+}
+
+.glow-image img {
+  width: 260px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow:
+    0 14px 40px rgba(0,0,0,0.6),
+    0 0 30px rgba(180, 130, 255, 0.25);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .glow-card {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .glow-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .glow-buttons {
+    justify-content: center;
+  }
+}
+
+
+.glow-card2 {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  background: #1a1a1f;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  border: 1px solid rgba(45, 14, 184, 0.25);
+  box-shadow:
+    0 0 25px rgba(9, 41, 146, 0.35),
+    0 0 60px rgba(0, 38, 255, 0.15);
+}
+
