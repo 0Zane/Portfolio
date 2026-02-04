@@ -237,8 +237,8 @@ li a:hover {
 }
 
 .project-button {
-    background: linear-gradient(90deg, #3a8bd8, #86d6ff);
-    color: #ffffff;
+    background: rgb(4, 34, 80);
+    color: #000000;
     padding: 10px 20px;
     border-radius: 10px;
     font-weight: 800;
